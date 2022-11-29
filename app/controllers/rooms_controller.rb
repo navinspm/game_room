@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show edit update destroy ]
+  before_action :set_room, only: %i[ show edit update destroy chat clear_role ]
   before_action :authenticate_user!
   
   # GET /rooms or /rooms.json
@@ -9,6 +9,15 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
+  end
+
+  def clear_role
+    if params[:role] == 'host'
+      @room.update_attribute(:host_id, nil)
+    elsif  params[:role] == 'player'
+      @room.update_attribute(:player_id, nil)
+    end
+    redirect_to action: 'index'
   end
 
   # GET /rooms/new
@@ -55,6 +64,15 @@ class RoomsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+
+  def chat
+    if params[:role].present? && params[:role] == 'host'
+      @room.update_attribute(:host_id, current_user.id)
+    elsif params[:role].present? && params[:role] == 'player'
+      @room.update_attribute(:player_id, current_user.id)
     end
   end
 

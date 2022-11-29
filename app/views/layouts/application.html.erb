@@ -11,8 +11,27 @@
   </head>
 
   <body>
-    
+    <% if user_signed_in? %>
+      <div class="container py-3">
+      <header>
+      <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Lux AI GameRoom</span>
+        </a>
 
-    <%= yield %>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"><%= greet %> - <%= current_user.email.split('@')[0].upcase %></a>
+        <%= link_to("Log Out", destroy_user_session_path, method: :delete, class: "py-2 text-dark text-decoration-none btn btn-light") %>
+        </nav>
+        </div>
+
+       
+      </header>
+      <%= yield %>
+      </div>
+    <% else  %>
+      <%= yield %>
+    <% end %>
+    </div>
   </body>
 </html>
