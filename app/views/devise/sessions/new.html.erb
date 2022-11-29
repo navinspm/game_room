@@ -4,18 +4,25 @@
       <div class="col-12 col-md-8 col-lg-6">
         <div class="card bg-white">
           <div class="card-body p-5">
+            <center>
+              <img src="https://luxai.com/wp-content/uploads/2021/03/logo_luxai_small-1.png" alt="LuxAI" class="site-logo-image" data-tf-not-load="1" importance="high" width="120" height="48"></center>
+            <br>
+            <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <center>
-                <img src="https://luxai.com/wp-content/uploads/2021/03/logo_luxai_small-1.png" alt="LuxAI" class="site-logo-image" data-tf-not-load="1" importance="high" width="120" height="48"></center>
-              <br>
+              
               <p class=" mb-5">Please enter your email and password!</p>
               <div class="mb-3">
                 <label for="email" class="form-label ">Email address</label>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
+                <%= f.email_field :email, autofocus: true, autocomplete: "off", class: "form-control", required: true%>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label ">Password</label>
-                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" , required: true%>
               </div>
               <div class="d-grid">
                 <%= f.submit "Log in", class: "btn btn-outline-dark" %>
