@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root "rooms#index"
+  resources :messages do
+    collection do
+      post 'show_button'
+    end
+  end
 end

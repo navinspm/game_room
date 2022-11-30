@@ -1,0 +1,6 @@
+<div class="form-group msg-form">
+    <%= form_with(model: [@room], remote: true, url: "/messages/show_button", method: 'post' ) do |f| %>
+       <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit 'Show', data: { disable_with: false }, class: "btn btn-primary" %>
+    <% end %>
+</div>
