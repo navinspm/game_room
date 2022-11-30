@@ -74,6 +74,9 @@ class RoomsController < ApplicationController
     elsif params[:role].present? && params[:role] == 'player'
       @room.update_attribute(:player_id, current_user.id)
     end
+    @current_user = current_user
+    @message = Message.new
+    @messages = @room.messages
   end
 
   private

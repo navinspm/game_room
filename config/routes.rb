@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get 'chat'
       get 'clear_role'
     end
+    resources :messages
   end
   devise_for :users
   root "rooms#index"

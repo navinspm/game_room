@@ -1,0 +1,38 @@
+
+<% if current_user.id == @room.host_id.to_i %>
+    <% if @room.player_id.present? %>
+        <div class="position-relative">
+            <img src="<%= user_gravatar(@room.player) %>>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+        </div>
+        <div class="flex-grow-1 pl-3">
+            <strong><%= @room.player.email %></strong>
+            <div class="text-muted small"><em>Typing...</em></div>
+        </div>
+    <% else %>
+        <div class="position-relative">
+            <img src="<%= asset_path('gravatar') %>>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+        </div>
+        <div class="flex-grow-1 pl-3">
+            <strong>Player is not joined yet</strong>
+            <div class="text-muted small"><em>Please wait...</em></div>
+        </div>
+    <% end %>
+<% elsif current_user.id ==  @room.player_id.to_i %>
+    <% if @room.host_id.present? %>
+    <div class="position-relative">
+        <img src="<%= user_gravatar(@room.host) %>>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+    </div>
+    <div class="flex-grow-1 pl-3">
+        <strong><%= @room.host.email %></strong>
+        <div class="text-muted small"><em>Typing...</em></div>
+    </div>
+    <% else %>
+    <div class="position-relative">
+        <img src="<%= asset_path('gravatar') %>>" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+    </div>
+    <div class="flex-grow-1 pl-3">
+        <strong>Host is not joined yet</strong>
+        <div class="text-muted small"><em>Please wait...</em></div>
+    </div>
+    <% end %>
+<% end %>
