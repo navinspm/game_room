@@ -1,6 +1,8 @@
 <div class="form-group msg-form">
-    <%= form_with(model: [@room], remote: true, url: "/messages/show_button", method: 'post' ) do |f| %>
+    <%= form_with(model: [@room], remote: true, url: "/messages/show_button", method: 'post', class: "d-flex",
+    data: { controller: "reset", action: "turbo:submit-end->reset#reset"} ) do |f| %>
        <%= f.hidden_field :room_id, value: @room.id %>
-        <%= f.submit 'Show', data: { disable_with: false }, class: "btn btn-primary" %>
+        <%= f.submit 'Show', data: { disable_with: false }, class: "btn btn-primary btn-lg btn-block", id: 'show_form_button' %>
     <% end %>
 </div>
+

@@ -5,7 +5,7 @@
             <img src="<%= user_gravatar(@room.player) %>>" class="rounded-circle mr-1" alt="Player" width="40" height="40">
         </div>
         <div class="flex-grow-1 pl-3">
-            <strong><%= @room.player.email %></strong>
+            <strong><%= @room.player.name %></strong>
             <div class="text-muted small"><em>Typing...</em></div>
         </div>
     <% else %>
@@ -23,7 +23,7 @@
         <img src="<%= user_gravatar(@room.host) %>>" class="rounded-circle mr-1" alt="Host" width="40" height="40">
     </div>
     <div class="flex-grow-1 pl-3">
-        <strong><%= @room.host.email %></strong>
+        <strong><%= @room.host.name %></strong>
         <div class="text-muted small"><em>Typing...</em></div>
     </div>
     <% else %>

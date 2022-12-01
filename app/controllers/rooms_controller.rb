@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
     elsif  params[:role] == 'player'
       @room.update_attribute(:player_id, nil)
     end
+    @room.messages.delete_all
     redirect_to action: 'index'
   end
 

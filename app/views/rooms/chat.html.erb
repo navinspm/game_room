@@ -23,8 +23,12 @@
 
 					<div class="flex-grow-0 py-3 px-4 border-top">
 						<div class="input-group">
-							<% if  @room.host_id.present? && @room.host_id.to_i == current_user.id && @room.player_id.present? && !@messages.last.action == 'show' %>
-								<%= render partial: 'rooms/show_button_form' %>
+							<% if  @room.host_id.present? && @room.host_id.to_i == current_user.id && @room.player_id.present?  %>
+							   <% if @room.messages.present? %>
+								   <%= render partial: 'rooms/show_button_form' unless @room.messages.last.action == 'show' %>  
+								<% else %>
+									<%= render partial: 'rooms/show_button_form' %>
+								<% end %>
 							<% end %>
 						</div>
 					</div>
