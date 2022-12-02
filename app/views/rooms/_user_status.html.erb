@@ -1,12 +1,12 @@
-
+<h2 class="display-6">Playing with</h2>
 <% if current_user.id == @room.host_id.to_i %>
     <% if @room.player_id.present? %>
         <div class="position-relative">
-            <img src="<%= user_gravatar(@room.player) %>>" class="rounded-circle mr-1" alt="Player" width="40" height="40">
+            <img src="<%= user_gravatar(@room.player) %>" class="rounded-circle mr-1" alt="Player" width="40" height="40">
         </div>
         <div class="flex-grow-1 pl-3">
             <strong><%= @room.player.name %></strong>
-            <div class="text-muted small"><em>Typing...</em></div>
+            <div class="text-muted small"><em><%= @room.player.online? %></em></div>
         </div>
     <% else %>
         <div class="position-relative">
@@ -24,7 +24,7 @@
     </div>
     <div class="flex-grow-1 pl-3">
         <strong><%= @room.host.name %></strong>
-        <div class="text-muted small"><em>Typing...</em></div>
+        <div class="text-muted small"><em><%= @room.host.online? %></em></div>
     </div>
     <% else %>
     <div class="position-relative">

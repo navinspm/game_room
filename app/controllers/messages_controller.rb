@@ -7,7 +7,11 @@ class MessagesController < ApplicationController
     end
 
     def show_button
-      Message.create(action: 'show', room_id: room_params[:room_id], user_id: current_user.id)
+      Message.create(action: 'show', room_id: params[:room_id], user_id: current_user.id)
+    end
+
+    def image_selection
+      Message.create(action: 'selected', room_id: params[:room_id], user_id: current_user.id, selected: params[:id])
     end
   
     private
@@ -18,9 +22,6 @@ class MessagesController < ApplicationController
       @room = Room.find(params[:room_id])
     end
 
-    def room_params
-      params.require(:room).permit(:room_id)
-    end
 
     def msg_params
       params.require(:message).permit(:content, :room_id)

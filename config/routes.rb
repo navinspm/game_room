@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'chat'
       get 'clear_role'
+      get 'message_history'
     end
     resources :messages
   end
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :messages do
     collection do
       post 'show_button'
+      post 'image_selection'
     end
   end
 end

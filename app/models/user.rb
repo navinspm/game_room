@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:timeoutable
   has_many :messages
 
+  def online?
+     updated_at > 2.minutes.ago ? "On line" : "Off line"
+  end
+
 end

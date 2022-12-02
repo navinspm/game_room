@@ -32,7 +32,7 @@
         </div>
         <div class="card-body">
           <% if @room.player.present? && @room.player.id == current_user.id.to_i %>
-            <%= link_to "Select", chat_room_path(role: 'host'), class: "w-100 btn btn-lg btn-outline-primary" %>
+            <%= link_to "Select", chat_room_path(role: 'player'), class: "w-100 btn btn-lg btn-outline-primary" %>
           <% elsif @room.player.present? %>
             <button class="w-100 btn btn-lg btn-outline-primary disabled">Player is present</button>
           <% elsif @room.host.present? && @room.host == current_user %>

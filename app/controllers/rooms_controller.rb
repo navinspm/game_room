@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show edit update destroy chat clear_role ]
+  before_action :set_room, only: %i[ show edit update destroy chat clear_role message_history ]
   before_action :authenticate_user!
   
   # GET /rooms or /rooms.json
@@ -17,7 +17,6 @@ class RoomsController < ApplicationController
     elsif  params[:role] == 'player'
       @room.update_attribute(:player_id, nil)
     end
-    @room.messages.delete_all
     redirect_to action: 'index'
   end
 
@@ -77,6 +76,10 @@ class RoomsController < ApplicationController
     end
     @current_user = current_user
     @message = Message.new
+    @messages = @room.messages
+  end
+
+  def message_history
     @messages = @room.messages
   end
 
