@@ -13,13 +13,13 @@
           <h4 class="my-0 fw-normal">Host</h4>
         </div>
         <div class="card-body">
-          <% if @room.host.present? && @room.host.id.to_i == current_user.id.to_i%>
+          <% if @room.host.present? && @room.host.id.to_i == current_user.id.to_i %>
             <%= link_to "Select", chat_room_path(role: 'host'), class: "w-100 btn btn-lg btn-outline-primary" %>
           <% elsif @room.host.present? %>
             <button class="w-100 btn btn-lg btn-outline-primary disabled">Host is Present</button>
           <% elsif @room.player.present? && @room.player == current_user %>
             <button class="w-100 btn btn-lg btn-outline-primary disabled">You are player in the room</button>
-          <% else   %>
+          <% else  %>
             <%= link_to "Select", chat_room_path(role: 'host'), class: "w-100 btn btn-lg btn-outline-primary" %>          
           <% end %>
         </div>
