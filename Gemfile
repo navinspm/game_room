@@ -58,6 +58,10 @@ group :development do
   gem "web-console"
   gem 'pry', '~> 0.13.1'
   gem "capistrano", "~> 3.17", require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-puma', require: false
+  gem 'capistrano-rails', require: false
 end
 
 group :test do
