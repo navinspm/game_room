@@ -21,9 +21,5 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: luxai
-  pool: 5
-  username: yaavarum
-  password: navin!@#$%
+  <<: *default
+  database: db/game_room.sqlite3
