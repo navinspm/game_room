@@ -1,16 +1,14 @@
 <%= turbo_stream_from [current_user, 'messages']  %> 
 <%= turbo_stream_from [current_user, 'show_button']  %> 
-  <div class="pricing-header px-1 py-1 pt-md-3 pb-md-2 mx-auto text-center">
-	<%= render partial: 'rooms/user_status' %>	
-  </div>
 
-  
+	<div class="pricing-header px-1 py-1 pt-md-3 pb-md-2 mx-auto text-center">
+		<%= render partial: 'rooms/user_status' %>	
+	</div>
+
 	<div class="p-1" id="messages">
 		<%= render @messages %>
-		
 	</div>
 	
-
 	<% if  @room.host_id.present? && @room.host_id.to_i == current_user.id.to_i && @room.player_id.present?  %>
 			<div class="pt-3 my-md-4 pt-md-4 border-top" id="show_button">
 				<% if @room.messages.present? %>
@@ -21,13 +19,13 @@
 			</div>	
 	<% end %>
 	
-	
-
-   <center><div class="border-top">
-	<br>
-	<%= link_to "See History", message_history_room_path(id: @room.id), class: "btn btn-secondary btn-sm mr-1 px-3 border-top" %>
-	<%= link_to "Exit Game", clear_role_room_path( role: params[:role]), class: "btn btn-secondary btn-sm mr-1 px-3 border-top" %>
-   </div></center>
+   <center>
+		<div class="border-top">
+			<br>
+			<%= link_to "See History", message_history_room_path(id: @room.id), class: "btn btn-secondary btn-sm mr-1 px-3 border-top" %>
+			<%= link_to "Exit Game", clear_role_room_path( role: params[:role]), class: "btn btn-secondary btn-sm mr-1 px-3 border-top" %>
+		</div>
+   </center>
     							 
   
 	

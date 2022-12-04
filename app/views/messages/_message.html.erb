@@ -12,7 +12,7 @@
                         </form>
                 </div>
                 <div class="col-sm-3">
-                    <% rand_id2 = rand(100) %>
+                    <% rand_id2 = rand_id+1 %>
                         <form action="/messages/image_selection?id=<%= rand_id2 %>&room_id=<%= message.room.id %>" method="post" data-controller="image" data-action="turbo:submit-end->image#reset" remote: true >
                             <input type="image" src="https://picsum.photos/id/<%= rand_id2 %>/300/300" alt="Submit"  width="300" height="300" class="card-img-top">
                         </form>

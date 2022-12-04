@@ -2,6 +2,6 @@
     <%= form_with(remote: true, url: "/messages/show_button", method: 'post', class: "",
     data: { controller: "reset", action: "turbo:submit-end->reset#reset"} ) do |f| %>
        <%= f.hidden_field :room_id, value: room %>
-        <%= f.submit 'Show', data: { disable_with: false }, class: "btn btn-lg btn-block btn-outline-primary", id: 'show_form_button' %>
+        <%= f.submit 'Show', data: { disable_with: false }, class: "btn btn-lg btn-block btn-outline-primary show_form_button", id: 'show_form_button', disabled: false %>
     <% end %>
 </div></center>
